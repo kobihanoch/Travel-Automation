@@ -1,0 +1,39 @@
+<!DOCTYPE html><html dir="rtl" lang="he"><head><style>body{font-family: Arial, sans-serif; background-color: #f0f0f0;} .hero-header{background-image: linear-gradient(to bottom, #ff0000, #ffcccc); color: #ffffff; padding: 20px; text-align: center;} .attractions-grid{display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto;} .card{background-color: #ffffff; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; padding: 15px;} .card img{width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;}</style></head><body><div class="hero-header"><h1>Paris</h1></div><div class="attractions-grid"><div class="card"><img id="img-attraction-1" src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwxfHxQYXJpc3xlbnwwfHx8fDE3ODE1MzgwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h3>המולן רוז'</h3><p>המולן רוז' הוא בית קפה היסטורי שנפתח בסוף המאה ה-19. הוא נודע בזכות הארכיטקטורה המרשימה, הקישוטים המפוארים והאווירה התרבותית. במקום זה נהגו לבקר סופרים, אמנים ואנשי רוח. המולן רוז' הוא מקום מושלם לשתיית קפה, לאכילת קינוחים ולחוויה תרבותית.</p></div><div class="card"><img id="img-attraction-2" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwyfHxQYXJpc3xlbnwwfHx8fDE3ODE1MzgwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h3>גלריית לובר</h3><p>גלריית לובר היא אחת מהגלריות המפורסמות בעולם. היא נמצאת בלב העיר פריז, ובה מוצגים יצירות אמנות רבות מתקופות שונות. הגלריה כוללת יצירות של אמנים מפורסמים, כגון לאונרדו דה וינצ'י, מיכלאנג'לו ורמברנדט.</p></div><div class="card"><img id="img-attraction-3" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwzfHxQYXJpc3xlbnwwfHx8fDE3ODE1MzgwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h3>מגדל אייפל</h3><p>מגדל אייפל הוא אחד מהמבנים המפורסמים בעולם. הוא נבנה בסוף המאה ה-19, ומאז הוא הפך לסמל של העיר פריז. המגדל מתנשא לגובה של 324 מטר, וממנו ניתן לראות נוף מרהיב של העיר.</p></div></div><div id="map-container" style="height:450px; width:100%; max-width:1200px; margin:40px auto; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.1); border: 2px solid #ccc; z-index: 1; position: relative;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+window.onload = function() {
+  const mapElement = document.getElementById('map-container');
+  if (!mapElement) return;
+
+  const map = L.map('map-container').setView(
+    [48.8567, 2.3522],
+    12
+  );
+
+  L.tileLayer(
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { maxZoom: 19, attribution: '© OpenStreetMap' }
+  ).addTo(map);
+
+  
+      L.marker([48.8567, 2.3522])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>המולן רוז\'</b></div>");
+    
+
+      L.marker([48.8647, 2.3214])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>גלריית לובר</b></div>");
+    
+
+      L.marker([48.8584, 2.2945])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>מגדל אייפל</b></div>");
+    
+
+  setTimeout(() => { map.invalidateSize(); }, 500);
+};
+</script>
+
+</body></html>
