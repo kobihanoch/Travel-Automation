@@ -1,0 +1,65 @@
+<!DOCTYPE html><html dir="rtl" lang="he"><head><style>body{font-family: Arial, sans-serif; background-color: #f0f0f0;} .hero{background: linear-gradient(0deg, #333, #444); color: #fff; padding: 20px; text-align: center;} .attractions-grid{display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto;} .card{background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 10px; padding: 20px;} .card img{width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;}</style></head><body>
+
+<div style="background:#1a1a1a;padding:20px;text-align:center;font-family:sans-serif;direction:rtl;box-shadow:0 4px 6px rgba(0,0,0,0.1);margin-bottom:20px;">
+  <span style="color:#fff;font-size:18px;margin-left:20px;">
+    האם הדף לטיול ב-Can מקובל עליך?
+  </span>
+
+  <a href="https://kobihanoch.app.n8n.cloud/webhook/approval-endpoint?action=approve&id=recZ0ALgoHE0wrQMq"
+     style="background:#28a745;color:white;padding:10px 25px;text-decoration:none;border-radius:5px;font-weight:bold;margin-left:10px;">
+     ✅ אישור ושמירה
+  </a>
+
+  <a href="https://kobihanoch.app.n8n.cloud/webhook/approval-endpoint?action=reject&id=recZ0ALgoHE0wrQMq"
+     style="background:#dc3545;color:white;padding:10px 25px;text-decoration:none;border-radius:5px;font-weight:bold;">
+     ❌ דחייה ובקשת תיקון
+  </a>
+</div>
+<div class="hero"><h1>קאן</h1></div><div class="attractions-grid"><div class="card"><img id="img-attraction-1" src="https://images.unsplash.com/photo-1696739696220-8d2e27465662?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwxfHxDYW58ZW58MHx8fHwxNzgxNTMyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h2>הר ברורונה</h2><p>הר ברורונה הוא שן הר ראווק וכל הר, לו רב העיר בקנדא לא.</p></div><div class="card"><img id="img-attraction-2" src="https://images.unsplash.com/photo-1696739696221-7ead1e368832?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwyfHxDYW58ZW58MHx8fHwxNzgxNTMyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h2>מוזיאום העיר</h2><p>מוזיאום העיר הוא מוזיאום התייל כא.</p></div><div class="card"><img id="img-attraction-3" src="https://images.unsplash.com/photo-1595642527404-0a937af8634c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NzcwNzJ8MHwxfHNlYXJjaHwzfHxDYW58ZW58MHx8fHwxNzgxNTMyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080" style="width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;" /><h2>איי ברורונה</h2><p>איי ברורונה הוא לו רב העיר בקנדא לא.</p></div></div><div id="map-container" style="height:450px; width:100%; max-width:1200px; margin:40px auto; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.1); border: 2px solid #ccc; z-index: 1; position: relative;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+window.onload = function() {
+
+  const mapElement = document.getElementById('map-container');
+
+  if (!mapElement) return;
+
+  const map = L.map('map-container').setView(
+    [49.2827, -123.1207],
+    12
+  );
+
+  L.tileLayer(
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }
+  ).addTo(map);
+
+  
+      L.marker([49.2827, -123.1207])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>הר ברורונה</b></div>");
+    
+
+      L.marker([49.2899, -123.1063])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>מוזיאום העיר</b></div>");
+    
+
+      L.marker([49.3042, -123.0839])
+        .addTo(map)
+        .bindPopup("<div style='text-align:right;font-family:sans-serif;'><b>איי ברורונה</b></div>");
+    
+
+  setTimeout(() => {
+      map.invalidateSize();
+  }, 500);
+};
+</script>
+
+</body></html>
